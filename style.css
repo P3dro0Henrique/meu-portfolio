@@ -1,5 +1,8 @@
 
-/* Configuração geral */
+/* =========================
+   CONFIGURAÇÃO GERAL
+========================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -10,9 +13,67 @@ body {
     background-color: #0f172a;
     color: white;
     font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-/* Cabeçalho */
+
+/* =========================
+   TEMA CLARO
+========================= */
+
+body.tema-claro {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}
+
+.tema-claro header,
+.tema-claro #projetos {
+    background-color: #e2e8f0;
+}
+
+.tema-claro .card {
+    background-color: white;
+    color: #0f172a;
+}
+
+.tema-claro .card p {
+    color: #475569;
+}
+
+
+/* =========================
+   BOTÃO DE TEMA
+========================= */
+
+.botao-tema {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+
+    background-color: #38bdf8;
+    color: #0f172a;
+
+    padding: 12px 18px;
+    border: none;
+    border-radius: 10px;
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.botao-tema:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   CABEÇALHO
+========================= */
+
 header {
     background-color: #1e293b;
     padding: 20px;
@@ -33,9 +94,18 @@ nav ul {
 nav a {
     color: white;
     text-decoration: none;
+    transition: 0.3s;
 }
 
-/* Seções */
+nav a:hover {
+    color: #38bdf8;
+}
+
+
+/* =========================
+   SEÇÕES
+========================= */
+
 section {
     padding: 80px 10%;
 }
@@ -51,83 +121,36 @@ section {
     margin-bottom: 25px;
 }
 
-/* Botão */
 #sobre a {
-    background-color: #38bdf8;
-    color: #0f172a;
-    padding: 12px 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* Projetos */
-#projetos {
-    background-color: #1e293b;
-}
-.tema-claro {
-    background-color: white;
-    color: black;
-}
-
-.container-projetos {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-.card {
-    background-color: #0f172a;
-    padding: 25px;
-    border-radius: 12px;
-    flex: 1;
-    min-width: 220px;
-    border: 1px solid #334155;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    border-color: #38bdf8;
-}
-
-.card h3 {
-    color: #38bdf8;
-    margin-bottom: 15px;
-}
-
-.card p {
-    color: #cbd5e1;
-}
-
-.links-contato {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.links-contato a,
-.card a {
     display: inline-block;
     background-color: #38bdf8;
     color: #0f172a;
-    padding: 10px 15px;
+
+    padding: 12px 20px;
     border-radius: 8px;
+
     text-decoration: none;
     font-weight: bold;
-    margin-top: 15px;
-    transition: 0.3s;
 }
 
-.links-contato a:hover,
-.card a:hover {
-    background-color: white;
-    transform: scale(1.05);
+
+/* =========================
+   PROJETOS
+========================= */
+
+#projetos {
+    background-color: #1e293b;
 }
 
-/* CARROSSEL DE PROJETOS */
+#projetos h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   CARROSSEL HORIZONTAL
+========================= */
 
 .carrossel {
     display: flex;
@@ -137,57 +160,105 @@ section {
     margin-top: 30px;
 }
 
-/* CARD DO PROJETO */
-
-.container-projetos {
-    width: 350px;
-    max-width: 100%;
+.carrossel-janela {
+    width: 100%;
+    max-width: 700px;
+    overflow: hidden;
+    padding: 35px 0;
 }
 
+.container-projetos {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    transition: transform 0.6s ease;
+    will-change: transform;
+}
+
+
+/* =========================
+   CARDS
+========================= */
+
 .card {
-    background-color: #1e1e2f;
+    background-color: #0f172a;
     color: white;
+
     padding: 30px;
     border-radius: 15px;
+
     text-align: center;
-    min-height: 180px;
+
+    width: 280px;
+    min-width: 280px;
+    min-height: 220px;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    transition: transform 0.3s ease;
+    border: 1px solid #334155;
+
+    opacity: 0.4;
+    transform: scale(0.85);
+
+    transition:
+        transform 0.6s ease,
+        opacity 0.6s ease,
+        border 0.6s ease,
+        box-shadow 0.6s ease;
 }
 
-.card:hover {
-    transform: translateY(-5px);
+.card.ativo {
+    opacity: 1;
+    transform: scale(1.05);
+
+    border: 2px solid #38bdf8;
+
+    box-shadow: 0 0 25px #38bdf830;
 }
 
 .card h3 {
-    color: #00bfff;
+    color: #38bdf8;
     margin-bottom: 15px;
 }
 
 .card p {
-    margin-bottom: 20px;
+    color: #cbd5e1;
     line-height: 1.5;
+    margin-bottom: 20px;
 }
 
 .card a {
-    color: #00bfff;
+    display: inline-block;
+
+    background-color: #38bdf8;
+    color: #0f172a;
+
+    padding: 10px 15px;
+    border-radius: 8px;
+
     text-decoration: none;
     font-weight: bold;
+
+    transition: 0.3s;
 }
 
 .card a:hover {
-    color: white;
+    background-color: white;
+    transform: scale(1.05);
 }
 
-/* SETAS */
+
+/* =========================
+   SETAS
+========================= */
 
 .carrossel button {
-    background-color: #00bfff;
-    color: white;
+    background-color: #38bdf8;
+    color: #0f172a;
+
     border: none;
     border-radius: 50%;
 
@@ -196,41 +267,59 @@ section {
 
     font-size: 20px;
     cursor: pointer;
+    flex-shrink: 0;
 
     transition: 0.3s;
 }
 
 .carrossel button:hover {
-    background-color: #008ecc;
+    background-color: white;
     transform: scale(1.1);
 }
 
-/* RESPONSIVIDADE */
 
-@media (max-width: 500px) {
-    .carrossel {
-        gap: 10px;
-    }
+/* =========================
+   CONTATO
+========================= */
 
-    .container-projetos {
-        width: 220px;
-    }
-
-    .card {
-        padding: 20px;
-    }
-
-    .carrossel button {
-        width: 35px;
-        height: 35px;
-        font-size: 16px;
-    }
+.links-contato {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-/* SKILLS */
+.links-contato a {
+    display: inline-block;
+
+    background-color: #38bdf8;
+    color: #0f172a;
+
+    padding: 10px 15px;
+    border-radius: 8px;
+
+    text-decoration: none;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.links-contato a:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+
+/* =========================
+   SKILLS
+========================= */
 
 #skills {
     padding: 60px 20px;
+}
+
+#skills h2 {
+    text-align: center;
 }
 
 .container-skills {
@@ -256,13 +345,17 @@ section {
 
 .progresso {
     height: 100%;
-    background-color: #00bfff;
+    background-color: #38bdf8;
     border-radius: 10px;
+
     width: 0;
     animation: preencher 2s forwards;
 }
 
-/* NÍVEIS DAS SKILLS */
+
+/* =========================
+   NÍVEIS DAS SKILLS
+========================= */
 
 .html {
     --nivel: 70%;
@@ -280,10 +373,62 @@ section {
     --nivel: 75%;
 }
 
-/* ANIMAÇÃO */
+
+/* =========================
+   ANIMAÇÃO DAS SKILLS
+========================= */
 
 @keyframes preencher {
     to {
         width: var(--nivel);
+    }
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        gap: 15px;
+    }
+
+    section {
+        padding: 60px 5%;
+    }
+
+    #sobre h1 {
+        font-size: 32px;
+    }
+
+    .carrossel {
+        gap: 8px;
+    }
+
+    .carrossel-janela {
+        max-width: 280px;
+    }
+
+    .container-projetos {
+        gap: 15px;
+    }
+
+    .card {
+        width: 230px;
+        min-width: 230px;
+        padding: 20px;
+    }
+
+    .carrossel button {
+        width: 35px;
+        height: 35px;
+        font-size: 16px;
     }
 }
